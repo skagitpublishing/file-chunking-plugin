@@ -21,7 +21,7 @@ app.use(multipart());
 
 // retrieve file id. invoke with /fileid?filename=my-file.jpg
 //app.get('/fileid', function(req, res){
-explorts.fileid = function(req, res) {
+exports.fileid = function(req, res) {
   if(!req.query.filename){
     return res.status(500).end('query parameter missing');
   }
