@@ -19,6 +19,10 @@ module.exports = function(app) {
   app.all('/api/exampleplugin/:id/update', keystone.middleware.api, routes.api.exampleplugin.update);
 	app.get('/api/exampleplugin/:id/remove', keystone.middleware.api, routes.api.exampleplugin.remove);
   
+  app.get('/fileid', keystone.middleware.api, routes.api.filechunking.fileid);
+  app.all('/upload', keystone.middleware.api, routes.api.filechunking.upload);
+  app.get('/download/:identifier', keystone.middleware.api, routes.api.filechunking.download);
+  
   // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
   app.get('/loggedinuser', middleware.requireUser, routes.views.loggedinuser);
