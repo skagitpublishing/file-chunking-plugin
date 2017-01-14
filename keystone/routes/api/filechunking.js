@@ -4,7 +4,7 @@ var keystone = require('keystone');
 //var express = require('express');
 //var resumable = require('./resumable-node.js')('/tmp/resumable.js/');
 var resumable = require('resumable');
-//var app = express();
+var app = express();
 var multipart = require('connect-multiparty');
 var crypto = require('crypto');
 
