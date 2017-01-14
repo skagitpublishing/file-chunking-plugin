@@ -21,7 +21,7 @@ app.use(multipart());
 
 // retrieve file id. invoke with /fileid?filename=my-file.jpg
 //app.get('/fileid', function(req, res){
-explorts.fileid = function(req,res) {
+explorts.fileid = function(req, res) {
   if(!req.query.filename){
     return res.status(500).end('query parameter missing');
   }
@@ -31,11 +31,11 @@ explorts.fileid = function(req,res) {
     .update(req.query.filename)
     .digest('hex')
   );
-});
+};
 
 // Handle uploads through Resumable.js
 //app.post('/upload', function(req, res){
-exports.upload = function(req,res) {
+exports.upload = function(req, res) {
     if(req.method == 'POST') {
       resumable.post(req, function(status, filename, original_filename, identifier){
           console.log('POST', status, original_filename, identifier);
@@ -50,7 +50,7 @@ exports.upload = function(req,res) {
         res.send((status == 'found' ? 200 : 404), status);
       });
     }
-});
+};
 
 // Handle status checks on chunks through Resumable.js
 //app.get('/upload', function(req, res){
@@ -63,7 +63,7 @@ exports.upload = function(req,res) {
 //app.get('/download/:identifier', function(req, res){
 exports.download = function(req, res) {
 	resumable.write(req.params.identifier, res);
-});
+};
 
 //app.get('/resumable.js', function (req, res) {
 //  var fs = require('fs');
