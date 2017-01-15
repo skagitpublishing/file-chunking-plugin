@@ -2,8 +2,8 @@ var async = require('async');
 var keystone = require('keystone');
 
 var express = require('express');
-//var resumable = require('./resumable-node.js')('/tmp/resumable.js/');
-var resumable = require('resumable');
+var resumable = require('resumable-node.js')('./tmp/');
+//var resumable = require('resumable')('public/uploads/filechunks/');
 var app = express();
 var multipart = require('connect-multiparty');
 var crypto = require('crypto');
@@ -22,6 +22,8 @@ app.use(multipart());
 // retrieve file id. invoke with /fileid?filename=my-file.jpg
 //app.get('/fileid', function(req, res){
 exports.fileid = function(req, res) {
+  debugger;
+  
   if(!req.query.filename){
     return res.status(500).end('query parameter missing');
   }
@@ -36,20 +38,22 @@ exports.fileid = function(req, res) {
 // Handle uploads through Resumable.js
 //app.post('/upload', function(req, res){
 exports.upload = function(req, res) {
-    if(req.method == 'POST') {
-      resumable.post(req, function(status, filename, original_filename, identifier){
-          console.log('POST', status, original_filename, identifier);
+  debugger;
+  
+  if(req.method == 'POST') {
+    resumable.post(req, function(status, filename, original_filename, identifier){
+        console.log('POST', status, original_filename, identifier);
 
-          res.send(status);
-      });
-    
-    //GET
-    } else {
-      resumable.get(req, function(status, filename, original_filename, identifier){
-        console.log('GET', status);
-        res.send((status == 'found' ? 200 : 404), status);
-      });
-    }
+        res.send(status);
+    });
+
+  //GET
+  } else {
+    resumable.get(req, function(status, filename, original_filename, identifier){
+      console.log('GET', status);
+      res.send((status == 'found' ? 200 : 404), status);
+    });
+  }
 };
 
 // Handle status checks on chunks through Resumable.js
@@ -62,6 +66,7 @@ exports.upload = function(req, res) {
 
 //app.get('/download/:identifier', function(req, res){
 exports.download = function(req, res) {
+  debugger;
 	resumable.write(req.params.identifier, res);
 };
 

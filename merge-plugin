@@ -20,3 +20,6 @@ echo Copying public files
 cp public/styles/*.css ../myCMS/public/styles/
 cp public/js/*.js ../myCMS/public/js/
 cp public/images/* ../myCMS/public/images/
+
+mkdir ../myCMS/public/uploads/filechunks
+cp resumable-node.js ../myCMS/node_modules/
