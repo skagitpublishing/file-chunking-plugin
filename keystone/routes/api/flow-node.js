@@ -11,7 +11,7 @@ module.exports = flow = function(temporaryFolder) {
 
     try {
         fs.mkdirSync($.temporaryFolder);
-    } catch (e) {}
+    } catch (e) {console.log('Error creating directory '+$.temporaryFolder+'. Error: '+e.message);}
 
     function cleanIdentifier(identifier) {
         return identifier.replace(/[^0-9A-Za-z_-]/g, '');
