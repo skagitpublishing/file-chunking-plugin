@@ -19,9 +19,14 @@ module.exports = function(app) {
   //app.all('/api/exampleplugin/:id/update', keystone.middleware.api, routes.api.exampleplugin.update);
 	//app.get('/api/exampleplugin/:id/remove', keystone.middleware.api, routes.api.exampleplugin.remove);
   
-  app.get('/fileid', keystone.middleware.api, routes.api.filechunking.fileid);
-  app.all('/upload', keystone.middleware.api, routes.api.filechunking.upload);
-  app.get('/download/:identifier', keystone.middleware.api, routes.api.filechunking.download);
+  //app.get('/fileid', keystone.middleware.api, routes.api.filechunking.fileid);
+  //app.all('/upload', keystone.middleware.api, routes.api.filechunking.upload);
+  //app.get('/download/:identifier', keystone.middleware.api, routes.api.filechunking.download);
+  
+  //File Upload with flow.js
+  app.get('/api/flow', keystone.middleware.api, routes.api.flow.get);
+  app.post('/api/flow', keystone.middleware.api, routes.api.flow.post);
+  app.get('/api/flow/download/:identifier', keystone.middleware.api, routes.api.flow.download);
   
   // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
