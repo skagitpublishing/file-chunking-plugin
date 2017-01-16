@@ -146,7 +146,13 @@ exports.post = function(req, res) {
   flow.post(req, function(status, filename, original_filename, identifier) {
     console.log('POST', status, original_filename, identifier);
 
-    res.status(status).send();
+    if((status == "partly_done") || (status == "done")){
+      var statusVal = 200;
+    } else {
+      var statusVal = 500;
+    }
+    
+    res.status(statusVal).send(status);
   });
 }
 
