@@ -31,7 +31,7 @@ exports.fileid = function(req, res) {
     .update(req.query.filename)
     .digest('hex')
   );
-};
+}; 
 
 // Handle uploads through Resumable.js
 //app.post('/upload', function(req, res){
