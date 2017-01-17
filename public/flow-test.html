@@ -176,6 +176,9 @@
             var now = new Date();
             model.createdTimeStamp = now.toISOString();
             model.fileType = fileInfo.file.type;
+            
+            //Replace the temp query object with the model data.
+            r.opts.query = model;
           });
           
           r.on('catchAll', function() {
