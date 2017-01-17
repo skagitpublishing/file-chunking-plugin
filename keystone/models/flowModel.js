@@ -10,7 +10,7 @@ var Types = keystone.Field.Types;
  * A database model for uploading images/files to the local file system
  */
 
-var FileUpload2 = new keystone.List('FileUpload2');
+var FlowModel = new keystone.List('FlowModel');
 
 //var myStorage = new keystone.Storage({
 //    adapter: keystone.Storage.Adapters.FS,
@@ -20,8 +20,8 @@ var FileUpload2 = new keystone.List('FileUpload2');
 //    }
 //});
 
-FileUpload2.add({
-        //name: { type: Types.Key, required: true, index: true }, //requiring name breaks image upload.
+FlowModel.add({
+  //name: { type: Types.Key, required: true, index: true }, //requiring name breaks image upload.
 	name: { type: Types.Key, index: true},
   //file: { 
 		//type: Types.LocalFile, 
@@ -46,11 +46,12 @@ FileUpload2.add({
 	parent: { type: String },
 	children: { type: String },
   url: {type: String},
-  fileType: {type: String}
+  fileType: {type: String},
+  flowChunks: { type: Types.TextArray }
         
 });
 
 
-FileUpload2.defaultColumns = 'name';
-FileUpload2.register();
+FlowModel.defaultColumns = 'name';
+FlowModel.register();
 

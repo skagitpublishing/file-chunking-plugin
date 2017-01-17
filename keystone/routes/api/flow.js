@@ -64,9 +64,9 @@ exports.download = function(req, res) {
 exports.update = function(req, res) {
   
   //Ensure the user has a valid CSRF token
-	if (!security.csrf.validate(req)) {
-		return res.apiError(403, 'invalid csrf');
-	}
+	//if (!security.csrf.validate(req)) {
+	//	return res.apiError(403, 'invalid csrf');
+	//}
   
   //Ensure the user making the request is a Keystone Admin
   var isAdmin = req.user.get('isAdmin');
@@ -103,7 +103,7 @@ exports.update = function(req, res) {
 }
 
 /**
- * Upload a New File
+ * Upload a New File and create a new file.
  */
 //exports.create = function(req, res) {
 exports.post = function(req, res) {
