@@ -5,8 +5,8 @@ var flow = require('./flow-node.js')('public/uploads/flow');
 
 var security = keystone.security;
 
-var FileData2 = keystone.list('FileUpload2');
-
+var FlowModel = keystone.list('FlowModel');
+ 
 /**
  * List Files
  */
