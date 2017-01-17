@@ -129,13 +129,14 @@ exports.post = function(req, res) {
   }
 */  
   
-
+  var data = (req.method == 'POST') ? req.body : req.query;
+  
   //Only create the new model on the first chunk.
   if(data.flowChunkNumber == "1") {
     debugger;
     
     var item = new FlowModel.model();
-		var data = (req.method == 'POST') ? req.body : req.query;
+		
     
     item.set({
       name: data.name,
