@@ -11,7 +11,7 @@ var FlowModel = keystone.list('FlowModel');
  * List Files
  */
 exports.list = function(req, res) {
-        FileData2.model.find(function(err, items) {
+        FlowModel.model.find(function(err, items) {
 
                 if (err) return res.apiError('database error', err);
 
@@ -28,7 +28,7 @@ exports.list = function(req, res) {
 exports.get = function(req, res) {
 
   /*
-        FileData2.model.findById(req.params.id).exec(function(err, item) {
+        FlowModel.model.findById(req.params.id).exec(function(err, item) {
 
                 if (err) return res.apiError('database error', err);
                 if (!item) return res.apiError('not found');
@@ -82,7 +82,7 @@ exports.update = function(req, res) {
     return res.apiError(403, 'Not allowed to access this API. Not ConnextCMS Admin')
   }
   
-  FileData2.model.findById(req.params.id).exec(function(err, item) {
+  FlowModel.model.findById(req.params.id).exec(function(err, item) {
 
     if (err) return res.apiError('database error', err);
     if (!item) return res.apiError('not found');
@@ -128,7 +128,7 @@ exports.post = function(req, res) {
     return res.apiError(403, 'Not allowed to access this API. Not ConnextCMS Admin')
   }
 */  
-  var item = new FileData2.model(),
+  var item = new FlowModel.model(),
 		data = (req.method == 'POST') ? req.body : req.query;
 
   /*
@@ -163,9 +163,9 @@ exports.post = function(req, res) {
 exports.remove = function(req, res) {
   
   //Ensure the user has a valid CSRF token
-	if (!security.csrf.validate(req)) {
-		return res.apiError(403, 'invalid csrf');
-	}
+	//if (!security.csrf.validate(req)) {
+	//	return res.apiError(403, 'invalid csrf');
+	//}
   
   //Ensure the user making the request is a Keystone Admin
   var isAdmin = req.user.get('isAdmin');
@@ -182,7 +182,7 @@ exports.remove = function(req, res) {
   }
   
 	var fileId = req.params.id;
-	FileData2.model.findById(req.params.id).exec(function (err, item) {
+	FlowModel.model.findById(req.params.id).exec(function (err, item) {
 
 		if (err) return res.apiError('database error', err);
 		if (!item) return res.apiError('not found');
