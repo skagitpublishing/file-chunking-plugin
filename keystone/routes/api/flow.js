@@ -107,7 +107,7 @@ exports.update = function(req, res) {
  */
 //exports.create = function(req, res) {
 exports.post = function(req, res) {
-  debugger;
+  //debugger;
 /*
   //Ensure the user has a valid CSRF token
 	if (!security.csrf.validate(req)) {
@@ -128,9 +128,26 @@ exports.post = function(req, res) {
     return res.apiError(403, 'Not allowed to access this API. Not ConnextCMS Admin')
   }
 */  
-  var item = new FlowModel.model(),
-		data = (req.method == 'POST') ? req.body : req.query;
+  
 
+  //Only create the new model on the first chunk.
+  if(data.flowChunkNumber == "1") {
+    debugger;
+    
+    var item = new FlowModel.model();
+		var data = (req.method == 'POST') ? req.body : req.query;
+    
+    item.set({
+      name: data.name,
+      createdTimeStamp: data.createdTimeStamp,
+      fileType: data.fileType
+    });
+    
+    item.save();
+  }
+  
+  
+  
   /*
   item.getUpdateHandler(req).process(req.files, function(err) {
 
