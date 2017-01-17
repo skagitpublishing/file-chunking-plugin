@@ -62,10 +62,15 @@
       <script>
         (function () {
           
+          var flowModel = new Object();
+          flowModel.test = 'test';
+          
           var r = new Flow({
             target: '/api/flow',
             chunkSize: 100*1024,
-            testChunks: false
+            testChunks: false,
+            singleFile: true,
+            query: flowModel
           });
           
           // Flow.js isn't supported, fall back on a different method
@@ -156,11 +161,21 @@
           
           r.on('uploadStart', function(){
             debugger;
+            
             // Show pause, hide resume
             $('.flow-progress .progress-resume-link').hide();
             $('.flow-progress .progress-pause-link').show();
             
+            //Get the last file entry
+            var arrayTarget = r.flow.files.length - 1;
+            var fileInfo = r.flow.files[arrayTarget];
+            
             //Generate flowModel data.
+            var model = new Object();
+            model.name = fileInfo.name;
+            var now = new Date();
+            model.createdTimeStamp = now.toISOString();
+            model.fileType = fileInfo.file.type;
           });
           
           r.on('catchAll', function() {
