@@ -1,5 +1,6 @@
 # file-chunking-plugin
-This is a plugin for ConnextCMS/KeystoneJS that incorporates file uploading with chunking a resumable uploads.
+This is a plugin for ConnextCMS/KeystoneJS based on the [plugin template repository](https://github.com/skagitpublishing/plugin-template-connextcms).
+It incorporates file uploading with chunking a resumable uploads.
 
 This repository is currently being developed and is not intended for public use.
 This plugin is based on [flow.js](https://github.com/flowjs/flow.js)
