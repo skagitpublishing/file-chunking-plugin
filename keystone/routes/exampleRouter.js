@@ -13,16 +13,6 @@ module.exports = function(app) {
   // Keystone Views
   app.get('/test', routes.views.test);
   
-  // Plugin API Route
-  //app.get('/api/exampleplugin/list', keystone.middleware.api, routes.api.exampleplugin.list);
-  //app.all('/api/exampleplugin/create', keystone.middleware.api, routes.api.exampleplugin.create);
-  //app.all('/api/exampleplugin/:id/update', keystone.middleware.api, routes.api.exampleplugin.update);
-	//app.get('/api/exampleplugin/:id/remove', keystone.middleware.api, routes.api.exampleplugin.remove);
-  
-  //app.get('/fileid', keystone.middleware.api, routes.api.filechunking.fileid);
-  //app.all('/upload', keystone.middleware.api, routes.api.filechunking.upload);
-  //app.get('/download/:identifier', keystone.middleware.api, routes.api.filechunking.download);
-  
   //File Upload with flow.js - These are flow.js specific API calls
   app.get('/api/flow', keystone.middleware.api, routes.api.flow.get); //Get metadata on file upload progress, etc.
   app.post('/api/flow', keystone.middleware.api, routes.api.flow.post); //Upload a file
