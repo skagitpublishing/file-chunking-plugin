@@ -16,8 +16,14 @@ module.exports = flow = function(temporaryFolder) {
     try {
         fs.mkdirSync($.temporaryFolder);
     } catch (e) {
-      debugger;
-      console.log('Error creating directory '+$.temporaryFolder+'. Error: '+e.message);
+      //debugger;
+      
+      if(e.code == "EEXIST") {
+        console.log('Flow upload directory '+$.temporaryFolder+' dectected successfully.');
+      } else {
+        console.log('Error creating directory '+$.temporaryFolder+'. Error: '+e.message);  
+      }
+      
     }
 
     function cleanIdentifier(identifier) {
