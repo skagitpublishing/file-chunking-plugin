@@ -23,10 +23,16 @@ module.exports = function(app) {
   //app.all('/upload', keystone.middleware.api, routes.api.filechunking.upload);
   //app.get('/download/:identifier', keystone.middleware.api, routes.api.filechunking.download);
   
-  //File Upload with flow.js
-  app.get('/api/flow', keystone.middleware.api, routes.api.flow.get);
-  app.post('/api/flow', keystone.middleware.api, routes.api.flow.post);
-  app.get('/api/flow/download/:identifier', keystone.middleware.api, routes.api.flow.download);
+  //File Upload with flow.js - These are flow.js specific API calls
+  app.get('/api/flow', keystone.middleware.api, routes.api.flow.get); //Get metadata on file upload progress, etc.
+  app.post('/api/flow', keystone.middleware.api, routes.api.flow.post); //Upload a file
+  app.get('/api/flow/download/:identifier', keystone.middleware.api, routes.api.flow.download); //download a file
+  
+  //File Upload with flow.js - These are KeystoneJS API calls for managing files in the DB.
+  app.get('/api/flowfiles/list', keystone.middleware.api, routes.api.flow.list);
+  app.get('/api/flowfiles/:id', keystone.middleware.api, routes.api.flow.getDBItem);
+  app.get('/api/flowfiles/:id/update', keystone.middleware.api, routes.api.flow.update);
+  app.get('/api/flowfiles/:id/remove', keystone.middleware.api, routes.api.flow.remove);
   
   // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);

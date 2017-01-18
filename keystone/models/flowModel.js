@@ -47,7 +47,8 @@ FlowModel.add({
 	children: { type: String },
   url: {type: String},
   fileType: {type: String},
-  flowChunks: { type: Types.TextArray }
+  flowChunks: { type: Types.TextArray },
+  flowIdentifier: {type: String}
         
 });
 
