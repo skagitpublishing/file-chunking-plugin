@@ -148,19 +148,6 @@ exports.post = function(req, res) {
   }
   
   
-  
-  /*
-  item.getUpdateHandler(req).process(req.files, function(err) {
-
-    if (err) return res.apiError('error', err);
-
-    res.apiResponse({
-            file_upload: item
-    });
-
-  });
-  */
-  
   flow.post(req, function(status, filename, original_filename, identifier) {
     console.log('POST', status, original_filename, identifier);
 
