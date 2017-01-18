@@ -21,7 +21,7 @@ module.exports = function(app) {
   //File Upload with flow.js - These are KeystoneJS API calls for managing files in the DB.
   app.get('/api/flowfiles/list', keystone.middleware.api, routes.api.flow.list);
   app.get('/api/flowfiles/:id', keystone.middleware.api, routes.api.flow.getDBItem);
-  app.get('/api/flowfiles/:id/update', keystone.middleware.api, routes.api.flow.update);
+  app.all('/api/flowfiles/:id/update', keystone.middleware.api, routes.api.flow.update);
   app.get('/api/flowfiles/:id/remove', keystone.middleware.api, routes.api.flow.remove);
   
   // NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
