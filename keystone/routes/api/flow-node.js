@@ -1,3 +1,7 @@
+//This file is a slightly modified version of the flow-node.js sample/example file
+//https://github.com/flowjs/flow.js
+//Modifications have been made to make the flow code work better with ConnextCMS and KeystoneJS.
+
 var fs = require('fs'),
     path = require('path'),
     util = require('util'),
