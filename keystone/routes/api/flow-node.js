@@ -15,7 +15,10 @@ module.exports = flow = function(temporaryFolder) {
 
     try {
         fs.mkdirSync($.temporaryFolder);
-    } catch (e) {console.log('Error creating directory '+$.temporaryFolder+'. Error: '+e.message);}
+    } catch (e) {
+      debugger;
+      console.log('Error creating directory '+$.temporaryFolder+'. Error: '+e.message);
+    }
 
     function cleanIdentifier(identifier) {
         return identifier.replace(/[^0-9A-Za-z_-]/g, '');
@@ -149,7 +152,7 @@ module.exports = flow = function(temporaryFolder) {
     //   stream.on('data', function(data){...});
     //   stream.on('finish', function(){...});
     $.write = function(identifier, writableStream, options) {
-      debugger;
+      //debugger;
       options = options || {};
       options.end = (typeof options['end'] == 'undefined' ? true : options['end']);
 
